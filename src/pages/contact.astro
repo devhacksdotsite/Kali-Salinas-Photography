@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/common/Container.astro";
+import SectionTitle from "../components/common/SectionTitle.astro";
+import ContactForm from "../components/contact/ContactForm.astro";
+import { socialLinks } from "../data/social";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Ready to book a session? Get in touch with Kali Salinas Photography. Serving Arizona and Southern California."
+>
+  <section class="py-16 md:py-24">
+    <Container>
+      <SectionTitle
+        title="Let's Connect"
+        subtitle="I'd love to hear about your vision. Fill out the form below and I'll be in touch!"
+        as="h1"
+      />
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <!-- Form -->
+        <div class="lg:col-span-2">
+          <ContactForm />
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <aside class="space-y-8">
+          <!-- Email -->
+          <div>
+            <h3 class="text-sm font-body font-semibold uppercase tracking-wider text-foreground/40 mb-3">
+              Email
+            </h3>
+            <a
+              href="mailto:hello@kalisalinasphotography.com"
+              class="text-foreground hover:text-accent transition-colors"
+            >
+              hello@kalisalinasphotography.com
+            </a>
+          </div>
+
+          <!-- Location -->
+          <div>
+            <h3 class="text-sm font-body font-semibold uppercase tracking-wider text-foreground/40 mb-3">
+              Based In
+            </h3>
+            <p class="text-foreground/70">
+              Arizona<br />
+              Serving AZ &amp; Southern California
+            </p>
+          </div>
+
+          <!-- Response Time -->
+          <div>
+            <h3 class="text-sm font-body font-semibold uppercase tracking-wider text-foreground/40 mb-3">
+              Response Time
+            </h3>
+            <p class="text-foreground/70">
+              Within 24–48 hours
+            </p>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h3 class="text-sm font-body font-semibold uppercase tracking-wider text-foreground/40 mb-3">
+              Follow Along
+            </h3>
+            <div class="flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-foreground/60 hover:text-accent transition-colors"
+                  aria-label={social.label}
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d={social.icon} />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
