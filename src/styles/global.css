@@ -24,6 +24,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     line-height: 1.6;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -74,5 +75,10 @@
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
+  }
+
+  /* Remove default marker from summary elements */
+  summary::-webkit-details-marker {
+    display: none;
   }
 }
