@@ -14,6 +14,8 @@ import Footer from "../components/layout/Footer.astro";
 interface Props extends SEOProps {
   /** Additional JSON-LD structured data to inject */
   jsonLd?: Record<string, unknown>;
+  /** URL to preload as high-priority image (e.g., hero) */
+  preloadImage?: string;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   ogType,
   noindex,
   jsonLd,
+  preloadImage,
 } = Astro.props;
 
 const seoProps: SEOProps = { title, description, canonical, ogImage, ogType, noindex };
@@ -49,6 +52,11 @@ const webPageSchema = getWebPageSchema(seoProps, currentUrl);
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Preload hero image -->
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} />
+    )}
 
     <!-- Open Graph -->
     {Object.entries(ogTags).map(([property, content]) => (

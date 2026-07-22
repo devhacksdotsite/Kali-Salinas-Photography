@@ -12,7 +12,8 @@ export interface SEOProps {
 }
 
 const SITE_NAME = "Kali Salinas Photography";
-const DEFAULT_OG_IMAGE = "/og-image.jpg";
+const SITE_URL = "https://kalisalinasphotography.com";
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 /**
  * Generate a full page title with site name suffix.
@@ -20,6 +21,15 @@ const DEFAULT_OG_IMAGE = "/og-image.jpg";
 export function getPageTitle(title: string): string {
   if (title === SITE_NAME) return title;
   return `${title} | ${SITE_NAME}`;
+}
+
+/**
+ * Resolve an image path to an absolute URL.
+ */
+function resolveImageUrl(image?: string): string {
+  if (!image) return DEFAULT_OG_IMAGE;
+  if (image.startsWith("http")) return image;
+  return `${SITE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
 }
 
 /**
@@ -31,7 +41,7 @@ export function getOpenGraphTags(props: SEOProps, url: string) {
     "og:description": props.description,
     "og:type": props.ogType ?? "website",
     "og:url": url,
-    "og:image": props.ogImage ?? DEFAULT_OG_IMAGE,
+    "og:image": resolveImageUrl(props.ogImage),
     "og:site_name": SITE_NAME,
   };
 }
@@ -44,7 +54,7 @@ export function getTwitterTags(props: SEOProps) {
     "twitter:card": "summary_large_image",
     "twitter:title": getPageTitle(props.title),
     "twitter:description": props.description,
-    "twitter:image": props.ogImage ?? DEFAULT_OG_IMAGE,
+    "twitter:image": resolveImageUrl(props.ogImage),
   };
 }
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getLocalBusinessSchema } from "../utils/seo";
+import { getImageUrl } from "../utils/cloudinary";
 import Hero from "../components/home/Hero.astro";
 import FeaturedGallery from "../components/home/FeaturedGallery.astro";
 import Services from "../components/home/Services.astro";
@@ -8,12 +9,15 @@ import AboutPreview from "../components/home/AboutPreview.astro";
 import Testimonials from "../components/home/Testimonials.astro";
 import CTA from "../components/home/CTA.astro";
 import InstagramFeed from "../components/home/InstagramFeed.astro";
+
+const heroImageUrl = getImageUrl("kali-photography/hero", { width: 1920, crop: "fill", gravity: "center" });
 ---
 
 <BaseLayout
   title="Arizona & California Family Photographer"
   description="Natural family, portrait, and lifestyle photography serving Arizona and Southern California. Book your session with Kali Salinas Photography."
   jsonLd={getLocalBusinessSchema()}
+  preloadImage={heroImageUrl}
 >
   <Hero />
   <FeaturedGallery />
