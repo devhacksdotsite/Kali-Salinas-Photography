@@ -1,0 +1,23 @@
+---
+import Container from "../common/Container.astro";
+
+interface Props {
+  /** Additional classes for the grid container */
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const classes = [
+  "columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<Container>
+  <div class={classes}>
+    <slot />
+  </div>
+</Container>

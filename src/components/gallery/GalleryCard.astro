@@ -1,0 +1,61 @@
+---
+import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
+
+interface Props {
+  /** Cloudinary public ID */
+  image: string;
+  /** Image alt text */
+  alt: string;
+  /** Optional title overlay */
+  title?: string;
+  /** Category label */
+  category?: string;
+  /** Full-size image URL for lightbox */
+  fullSizeUrl?: string;
+}
+
+const { image, alt, title, category, fullSizeUrl } = Astro.props;
+
+const imgSrc = getImageUrl(image, { width: 640, crop: "fill" });
+const imgSrcSet = getSrcSet(image, { crop: "fill" });
+const fullUrl = fullSizeUrl ?? getImageUrl(image, { width: 1920, quality: "auto" });
+---
+
+<figure
+  class="group relative overflow-hidden rounded-lg cursor-pointer"
+  data-lightbox-trigger
+  data-full-src={fullUrl}
+  data-alt={alt}
+  data-title={title ?? ""}
+>
+  <img
+    src={imgSrc}
+    srcset={imgSrcSet}
+    sizes={getSizes("gallery")}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+  />
+
+  <!-- Hover Overlay -->
+  <div class="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors duration-300 flex items-end">
+    {(title || category) && (
+      <div class="w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        {title && (
+          <p class="text-white font-heading text-lg drop-shadow">{title}</p>
+        )}
+        {category && (
+          <p class="text-white/80 text-xs uppercase tracking-wider mt-1">{category}</p>
+        )}
+      </div>
+    )}
+  </div>
+
+  <!-- Expand Icon -->
+  <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <svg class="w-6 h-6 text-white drop-shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+    </svg>
+  </div>
+</figure>

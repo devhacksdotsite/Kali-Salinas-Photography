@@ -1,0 +1,65 @@
+---
+interface Props {
+  /** List of category options */
+  categories: string[];
+  /** Currently active category (empty string or "all" for none) */
+  activeCategory?: string;
+}
+
+const { categories, activeCategory = "all" } = Astro.props;
+
+const allCategories = ["all", ...categories];
+---
+
+<div class="flex flex-wrap items-center justify-center gap-2 mb-12" role="toolbar" aria-label="Filter by category">
+  {allCategories.map((category) => {
+    const isActive = category === activeCategory;
+    return (
+      <button
+        type="button"
+        class:list={[
+          "px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 capitalize",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+          isActive
+            ? "bg-accent text-white"
+            : "bg-accent-light text-foreground/70 hover:bg-accent/10 hover:text-foreground",
+        ]}
+        data-filter-btn
+        data-category={category}
+        aria-pressed={isActive ? "true" : "false"}
+      >
+        {category === "all" ? "All" : category}
+      </button>
+    );
+  })}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter-btn]");
+  const cards = document.querySelectorAll<HTMLElement>("[data-category-item]");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const category = btn.dataset.category;
+
+      // Update active state
+      buttons.forEach((b) => {
+        const isActive = b.dataset.category === category;
+        b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        b.classList.toggle("bg-accent", isActive);
+        b.classList.toggle("text-white", isActive);
+        b.classList.toggle("bg-accent-light", !isActive);
+        b.classList.toggle("text-foreground/70", !isActive);
+      });
+
+      // Filter cards
+      cards.forEach((card) => {
+        if (category === "all" || card.dataset.categoryItem === category) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,169 @@
+---
+/**
+ * Lightbox modal for viewing full-size gallery images.
+ * Triggered by elements with [data-lightbox-trigger].
+ * Reads data-full-src, data-alt, and data-title attributes.
+ */
+---
+
+<!-- Lightbox Modal -->
+<div
+  id="lightbox"
+  class="fixed inset-0 z-[100] hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+>
+  <!-- Backdrop -->
+  <div id="lightbox-backdrop" class="absolute inset-0 bg-foreground/90 opacity-0 transition-opacity duration-300"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 flex items-center justify-center w-full h-full p-4 md:p-8">
+    <!-- Close Button -->
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 text-white/80 hover:text-white transition-colors"
+      aria-label="Close image viewer"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Previous Button -->
+    <button
+      id="lightbox-prev"
+      class="absolute left-4 z-20 flex items-center justify-center w-10 h-10 text-white/80 hover:text-white transition-colors"
+      aria-label="Previous image"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      id="lightbox-next"
+      class="absolute right-4 z-20 flex items-center justify-center w-10 h-10 text-white/80 hover:text-white transition-colors"
+      aria-label="Next image"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Image Container -->
+    <figure class="max-w-full max-h-full flex flex-col items-center">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[80vh] object-contain rounded shadow-2xl"
+      />
+      <figcaption id="lightbox-caption" class="mt-4 text-center text-white/80 text-sm font-body"></figcaption>
+    </figure>
+  </div>
+</div>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const backdrop = document.getElementById("lightbox-backdrop");
+  const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+  const caption = document.getElementById("lightbox-caption");
+  const closeBtn = document.getElementById("lightbox-close");
+  const prevBtn = document.getElementById("lightbox-prev");
+  const nextBtn = document.getElementById("lightbox-next");
+
+  let triggers: HTMLElement[] = [];
+  let currentIndex = 0;
+
+  function collectTriggers() {
+    triggers = Array.from(document.querySelectorAll<HTMLElement>("[data-lightbox-trigger]"));
+  }
+
+  function open(index: number) {
+    collectTriggers();
+    if (!triggers[index]) return;
+
+    currentIndex = index;
+    updateImage();
+
+    lightbox?.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      backdrop?.classList.replace("opacity-0", "opacity-100");
+    });
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    backdrop?.classList.replace("opacity-100", "opacity-0");
+    document.body.style.overflow = "";
+    setTimeout(() => lightbox?.classList.add("hidden"), 300);
+  }
+
+  function updateImage() {
+    const trigger = triggers[currentIndex];
+    if (!trigger || !img) return;
+
+    const src = trigger.dataset.fullSrc ?? "";
+    const alt = trigger.dataset.alt ?? "";
+    const title = trigger.dataset.title ?? "";
+
+    img.src = src;
+    img.alt = alt;
+
+    if (caption) {
+      caption.textContent = title;
+      caption.style.display = title ? "" : "none";
+    }
+
+    // Show/hide prev/next based on position
+    if (prevBtn) prevBtn.style.display = currentIndex > 0 ? "" : "none";
+    if (nextBtn) nextBtn.style.display = currentIndex < triggers.length - 1 ? "" : "none";
+  }
+
+  function next() {
+    if (currentIndex < triggers.length - 1) {
+      currentIndex++;
+      updateImage();
+    }
+  }
+
+  function prev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateImage();
+    }
+  }
+
+  // Event listeners
+  document.addEventListener("click", (e) => {
+    const trigger = (e.target as HTMLElement).closest("[data-lightbox-trigger]") as HTMLElement | null;
+    if (trigger) {
+      collectTriggers();
+      const index = triggers.indexOf(trigger);
+      if (index !== -1) open(index);
+    }
+  });
+
+  closeBtn?.addEventListener("click", close);
+  backdrop?.addEventListener("click", close);
+  prevBtn?.addEventListener("click", prev);
+  nextBtn?.addEventListener("click", next);
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox?.classList.contains("hidden")) return;
+
+    switch (e.key) {
+      case "Escape":
+        close();
+        break;
+      case "ArrowLeft":
+        prev();
+        break;
+      case "ArrowRight":
+        next();
+        break;
+    }
+  });
+</script>
