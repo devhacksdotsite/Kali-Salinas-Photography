@@ -1,0 +1,77 @@
+---
+import "../styles/global.css";
+import {
+  type SEOProps,
+  getPageTitle,
+  getOpenGraphTags,
+  getTwitterTags,
+  getWebPageSchema,
+} from "../utils/seo";
+
+interface Props extends SEOProps {
+  /** Additional JSON-LD structured data to inject */
+  jsonLd?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogType,
+  noindex,
+  jsonLd,
+} = Astro.props;
+
+const seoProps: SEOProps = { title, description, canonical, ogImage, ogType, noindex };
+const currentUrl = canonical ?? Astro.url.href;
+const pageTitle = getPageTitle(title);
+const ogTags = getOpenGraphTags(seoProps, currentUrl);
+const twitterTags = getTwitterTags(seoProps);
+const webPageSchema = getWebPageSchema(seoProps, currentUrl);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={currentUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Open Graph -->
+    {Object.entries(ogTags).map(([property, content]) => (
+      <meta property={property} content={content} />
+    ))}
+
+    <!-- Twitter Card -->
+    {Object.entries(twitterTags).map(([name, content]) => (
+      <meta name={name} content={content} />
+    ))}
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Future: Navbar slot here -->
+    <main class="flex-1">
+      <slot />
+    </main>
+    <!-- Future: Footer slot here -->
+  </body>
+</html>
