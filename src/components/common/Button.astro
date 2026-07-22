@@ -1,0 +1,47 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  /** Visual style variant */
+  variant?: "primary" | "secondary" | "outline";
+  /** Render as a link instead of button */
+  href?: string;
+  /** Full width */
+  fullWidth?: boolean;
+}
+
+const {
+  variant = "primary",
+  href,
+  fullWidth = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const baseClasses =
+  "inline-flex items-center justify-center px-6 py-3 font-body font-semibold text-sm tracking-wide rounded transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+
+const variantClasses: Record<string, string> = {
+  primary: "bg-accent text-white hover:bg-accent/90",
+  secondary: "bg-accent-light text-foreground hover:bg-accent-light/80",
+  outline: "border-2 border-accent text-accent hover:bg-accent hover:text-white",
+};
+
+const widthClass = fullWidth ? "w-full" : "";
+
+const classes = [baseClasses, variantClasses[variant], widthClass, className]
+  .filter(Boolean)
+  .join(" ");
+
+const Tag = href ? "a" : "button";
+---
+
+{href ? (
+  <a href={href} class={classes} {...rest}>
+    <slot />
+  </a>
+) : (
+  <button class={classes} {...rest}>
+    <slot />
+  </button>
+)}

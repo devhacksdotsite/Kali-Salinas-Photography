@@ -1,0 +1,43 @@
+---
+interface Props {
+  /** The heading text */
+  title: string;
+  /** Optional subtitle below the heading */
+  subtitle?: string;
+  /** Heading level (default: h2) */
+  as?: "h1" | "h2" | "h3" | "h4";
+  /** Text alignment (default: center) */
+  align?: "left" | "center" | "right";
+  /** Additional classes */
+  class?: string;
+}
+
+const {
+  title,
+  subtitle,
+  as: Tag = "h2",
+  align = "center",
+  class: className,
+} = Astro.props;
+
+const alignClass: Record<string, string> = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+};
+
+const wrapperClasses = ["mb-12", alignClass[align], className]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div class={wrapperClasses}>
+  <Tag class="text-3xl md:text-4xl text-foreground">
+    {title}
+  </Tag>
+  {subtitle && (
+    <p class="mt-3 text-foreground/60 max-w-2xl mx-auto text-lg">
+      {subtitle}
+    </p>
+  )}
+</div>

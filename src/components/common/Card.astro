@@ -1,0 +1,41 @@
+---
+interface Props {
+  /** Optional href to make the whole card a link */
+  href?: string;
+  /** Whether to add hover elevation effect */
+  hoverable?: boolean;
+  /** Remove default padding (useful for image cards) */
+  noPadding?: boolean;
+  /** Additional classes */
+  class?: string;
+}
+
+const {
+  href,
+  hoverable = false,
+  noPadding = false,
+  class: className,
+} = Astro.props;
+
+const baseClasses = "rounded-lg border border-border bg-white overflow-hidden";
+const hoverClasses = hoverable
+  ? "transition-shadow duration-200 hover:shadow-lg"
+  : "";
+const paddingClasses = noPadding ? "" : "p-6";
+
+const classes = [baseClasses, hoverClasses, paddingClasses, className]
+  .filter(Boolean)
+  .join(" ");
+
+const Tag = href ? "a" : "div";
+---
+
+{href ? (
+  <a href={href} class={`${classes} block no-underline text-foreground`}>
+    <slot />
+  </a>
+) : (
+  <div class={classes}>
+    <slot />
+  </div>
+)}

@@ -1,0 +1,18 @@
+---
+interface Props {
+  /** Max width class override (default: max-w-7xl) */
+  maxWidth?: string;
+  /** Additional classes */
+  class?: string;
+}
+
+const { maxWidth = "max-w-7xl", class: className } = Astro.props;
+
+const classes = ["mx-auto px-4 sm:px-6 lg:px-8", maxWidth, className]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div class={classes}>
+  <slot />
+</div>
