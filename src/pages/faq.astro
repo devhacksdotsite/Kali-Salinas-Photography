@@ -1,0 +1,148 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/common/Container.astro";
+import SectionTitle from "../components/common/SectionTitle.astro";
+import Button from "../components/common/Button.astro";
+
+const faqs = [
+  {
+    category: "Before Your Session",
+    questions: [
+      {
+        question: "What should we wear?",
+        answer:
+          "I recommend coordinating (not matching!) in soft, neutral tones — think creams, tans, sage, dusty blue, or muted earth tones. Avoid large logos, neon colors, and busy patterns. I send a detailed wardrobe guide after booking!",
+      },
+      {
+        question: "How do I prepare for a session?",
+        answer:
+          "The best thing you can do is come relaxed and ready to have fun. I'll send a prep guide with tips on clothing, timing, and what to expect. For family sessions, well-rested and well-fed kiddos make all the difference!",
+      },
+      {
+        question: "Can you help us choose a location?",
+        answer:
+          "Absolutely! I have a curated list of beautiful locations throughout Arizona and Southern California. I'll recommend spots based on the look you want, time of year, and how far you'd like to travel.",
+      },
+    ],
+  },
+  {
+    category: "During Your Session",
+    questions: [
+      {
+        question: "How long does a session last?",
+        answer:
+          "It depends on the package — typically 45 minutes for portraits, 60 minutes for families, and 75 minutes for couples. Weddings and events are customized based on your timeline. I never rush!",
+      },
+      {
+        question: "Do you pose people or is it candid?",
+        answer:
+          "A mix of both! I'll gently guide you into flattering positions and give prompts that create natural interaction. The best photos usually come from the moments between the poses — a real laugh, a whispered joke, a spontaneous hug.",
+      },
+      {
+        question: "What if my kids won't cooperate?",
+        answer:
+          "I have plenty of experience with little ones! I keep things playful and low-pressure. Some of the best family photos happen when kids are being their silly, authentic selves. Trust the process — it always works out.",
+      },
+    ],
+  },
+  {
+    category: "After Your Session",
+    questions: [
+      {
+        question: "How many images are included?",
+        answer:
+          "The number varies by session type — typically 25–50+ fully edited images. I cull carefully and only deliver images I'm proud of. Quality over quantity, always.",
+      },
+      {
+        question: "How long until we receive our photos?",
+        answer:
+          "Your full online gallery will be ready within 2–3 weeks. Wedding collections take 6–8 weeks due to the volume of images. I'll send sneak peeks within a few days!",
+      },
+      {
+        question: "Can we order prints?",
+        answer:
+          "Yes! Your gallery includes a built-in print shop with professional-quality prints, canvases, albums, and more — shipped directly to your door. I can also help you plan a gallery wall.",
+      },
+    ],
+  },
+  {
+    category: "Logistics & Policies",
+    questions: [
+      {
+        question: "Do you travel?",
+        answer:
+          "I do! I'm based in Arizona and regularly travel to Southern California at no extra charge. For other destinations, a travel fee may apply — let's chat about your dream location.",
+      },
+      {
+        question: "What happens if it rains?",
+        answer:
+          "We'll reschedule at no extra cost! I keep a close eye on the forecast leading up to your session and will reach out if we need to move things around. Overcast days, on the other hand, make for gorgeous light.",
+      },
+      {
+        question: "What is your cancellation policy?",
+        answer:
+          "Life happens! Sessions can be rescheduled up to 48 hours in advance with no penalty. Cancellations with less than 48 hours notice will forfeit the session retainer. Full details are in your booking contract.",
+      },
+      {
+        question: "How do I book?",
+        answer:
+          "Simply fill out the contact form or send me an email! I'll respond within 24–48 hours with availability and next steps. A signed contract and retainer secure your date.",
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Frequently asked questions about sessions with Kali Salinas Photography — what to wear, what to expect, and how it all works."
+>
+  <section class="py-16 md:py-24">
+    <Container maxWidth="max-w-3xl">
+      <SectionTitle
+        title="Frequently Asked Questions"
+        subtitle="Everything you need to know before, during, and after your session."
+        as="h1"
+      />
+
+      <div class="space-y-12">
+        {faqs.map((section) => (
+          <div>
+            <h2 class="text-xl mb-4 text-foreground/80 font-heading">{section.category}</h2>
+            <div class="space-y-3">
+              {section.questions.map((faq) => (
+                <details class="group rounded-lg border border-border bg-white">
+                  <summary class="flex items-center justify-between cursor-pointer list-none p-5 font-medium text-foreground">
+                    {faq.question}
+                    <svg
+                      class="w-5 h-5 text-foreground/40 transition-transform duration-200 group-open:rotate-180 shrink-0 ml-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <p class="px-5 pb-5 text-sm text-foreground/70 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 text-center">
+        <p class="text-foreground/60 mb-6">
+          Still have questions? I'm happy to help!
+        </p>
+        <Button href="/contact" variant="primary">
+          Get in Touch
+        </Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
