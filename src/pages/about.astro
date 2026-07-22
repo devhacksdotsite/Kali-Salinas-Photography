@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/common/Container.astro";
+import SectionTitle from "../components/common/SectionTitle.astro";
+import Button from "../components/common/Button.astro";
+import CTA from "../components/home/CTA.astro";
+import { getImageUrl, getSrcSet, getSizes } from "../utils/cloudinary";
+
+const portraitImage = "kali-photography/about/portrait";
+
+const faqs = [
+  {
+    question: "What's your photography style?",
+    answer:
+      "I'd describe my style as natural, warm, and timeless. I focus on real moments and genuine emotion rather than stiff posing. Think golden light, authentic laughter, and images that feel like you.",
+  },
+  {
+    question: "How long have you been a photographer?",
+    answer:
+      "I've been shooting professionally for over 6 years, but my love for photography started long before that with a hand-me-down film camera in high school.",
+  },
+  {
+    question: "Do you travel for sessions?",
+    answer:
+      "Absolutely! I'm based in Arizona and regularly travel throughout Southern California. I'm always open to destination sessions — let's chat about your dream location.",
+  },
+  {
+    question: "What happens after our session?",
+    answer:
+      "I hand-edit every image in your gallery. You'll receive your full online gallery within 2–3 weeks, with digital downloads and the option to order prints directly.",
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Get to know Kali Salinas — natural light photographer serving Arizona and Southern California. Learn about my story, style, and approach."
+>
+  <!-- Portrait & Story -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Portrait -->
+        <div class="aspect-[3/4] rounded-lg overflow-hidden bg-accent-light">
+          <img
+            src={getImageUrl(portraitImage, { width: 640, crop: "fill", aspectRatio: "3:4", gravity: "face" })}
+            srcset={getSrcSet(portraitImage, { crop: "fill", aspectRatio: "3:4", gravity: "face" })}
+            sizes={getSizes("half")}
+            alt="Kali Salinas holding her camera and smiling"
+            loading="eager"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Story -->
+        <div>
+          <h1 class="text-4xl md:text-5xl mb-6">Hi, I'm Kali</h1>
+          <div class="space-y-4 text-foreground/70 leading-relaxed">
+            <p>
+              I'm a natural light photographer based in Arizona with a passion for capturing
+              life's most beautiful, unscripted moments. Whether it's a toddler's belly laugh,
+              the way a couple looks at each other, or the quiet chaos of a family morning —
+              those are the moments I live for.
+            </p>
+            <p>
+              Photography found me during a season of change, and it quickly became my way of
+              seeing the world more intentionally. I traded a corporate career for golden hour
+              sessions and never looked back.
+            </p>
+            <p>
+              When I'm not behind the camera, you'll find me exploring new hiking trails,
+              trying (and sometimes failing at) new recipes, or snuggling my two rescue dogs
+              on the couch.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Photography Style -->
+  <section class="py-16 md:py-24 bg-accent-light/40">
+    <Container maxWidth="max-w-4xl">
+      <SectionTitle
+        title="My Approach"
+        subtitle="What to expect when we work together."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg mb-2">Natural Light</h3>
+          <p class="text-sm text-foreground/60">
+            I shoot exclusively with natural light for soft, warm, and flattering images that feel timeless.
+          </p>
+        </div>
+
+        <div>
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+          <h3 class="text-lg mb-2">Connection First</h3>
+          <p class="text-sm text-foreground/60">
+            My priority is making you feel comfortable so we can capture genuine emotion and real connection.
+          </p>
+        </div>
+
+        <div>
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+            </svg>
+          </div>
+          <h3 class="text-lg mb-2">Timeless Editing</h3>
+          <p class="text-sm text-foreground/60">
+            Clean, true-to-life editing that won't look dated in 10 years. No heavy filters or trendy presets.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Equipment -->
+  <section class="py-16 md:py-24">
+    <Container maxWidth="max-w-4xl">
+      <SectionTitle
+        title="My Gear"
+        subtitle="The tools I trust to capture your memories."
+      />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-lg border border-border bg-white">
+          <h3 class="text-lg mb-3">Camera Bodies</h3>
+          <ul class="space-y-2 text-sm text-foreground/70">
+            <li>Canon R6 Mark II (primary)</li>
+            <li>Canon R5 (backup)</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-lg border border-border bg-white">
+          <h3 class="text-lg mb-3">Lenses</h3>
+          <ul class="space-y-2 text-sm text-foreground/70">
+            <li>RF 35mm f/1.4L — environmental portraits</li>
+            <li>RF 50mm f/1.2L — portraits & details</li>
+            <li>RF 85mm f/1.2L — compression & bokeh</li>
+            <li>RF 24-70mm f/2.8L — versatility</li>
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Mini FAQ -->
+  <section class="py-16 md:py-24 bg-accent-light/40">
+    <Container maxWidth="max-w-3xl">
+      <SectionTitle
+        title="Questions?"
+        subtitle="A few things people often ask."
+      />
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-lg border border-border bg-white p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-foreground">
+              {faq.question}
+              <svg
+                class="w-5 h-5 text-foreground/40 transition-transform group-open:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-sm text-foreground/70 leading-relaxed">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <Button href="/faq" variant="secondary">
+          See All FAQs
+        </Button>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <CTA />
+</BaseLayout>
