@@ -1,19 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getLocalBusinessSchema } from "../utils/seo";
+import Hero from "../components/home/Hero.astro";
+import FeaturedGallery from "../components/home/FeaturedGallery.astro";
+import Services from "../components/home/Services.astro";
+import AboutPreview from "../components/home/AboutPreview.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+import CTA from "../components/home/CTA.astro";
+import InstagramFeed from "../components/home/InstagramFeed.astro";
 ---
 
 <BaseLayout
-  title="San Diego Family Photographer"
-  description="Natural family, portrait, and lifestyle photography serving Arizona and Southern California."
+  title="Arizona & California Family Photographer"
+  description="Natural family, portrait, and lifestyle photography serving Arizona and Southern California. Book your session with Kali Salinas Photography."
   jsonLd={getLocalBusinessSchema()}
 >
-  <section class="flex items-center justify-center min-h-[60vh] px-4 text-center">
-    <div>
-      <h1 class="text-4xl md:text-6xl mb-4">Kali Salinas Photography</h1>
-      <p class="text-lg text-foreground/70 max-w-xl mx-auto">
-        Natural, timeless photography for families, couples, and portraits in Arizona and Southern California.
-      </p>
-    </div>
-  </section>
+  <Hero />
+  <FeaturedGallery />
+  <Services />
+  <AboutPreview />
+  <Testimonials />
+  <InstagramFeed />
+  <CTA />
 </BaseLayout>

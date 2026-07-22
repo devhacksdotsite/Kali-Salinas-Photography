@@ -1,0 +1,46 @@
+---
+import Container from "../common/Container.astro";
+import Button from "../common/Button.astro";
+import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
+
+const portraitImage = "kali-photography/about/portrait";
+---
+
+<section class="py-16 md:py-24">
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Portrait -->
+      <div class="order-2 md:order-1">
+        <div class="aspect-[3/4] rounded-lg overflow-hidden">
+          <img
+            src={getImageUrl(portraitImage, { width: 640, crop: "fill", aspectRatio: "3:4", gravity: "face" })}
+            srcset={getSrcSet(portraitImage, { crop: "fill", aspectRatio: "3:4", gravity: "face" })}
+            sizes={getSizes("half")}
+            alt="Kali Salinas, photographer"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="order-1 md:order-2">
+        <h2 class="text-3xl md:text-4xl mb-6">Hi, I'm Kali</h2>
+        <p class="text-foreground/70 mb-4 leading-relaxed">
+          I'm a natural light photographer based in Arizona, serving families and couples across
+          Arizona and Southern California. My approach is relaxed and genuine — I want you to
+          feel comfortable being yourselves so I can capture the real, beautiful moments.
+        </p>
+        <p class="text-foreground/70 mb-8 leading-relaxed">
+          Whether it's a golden hour family session on the beach, an intimate engagement
+          shoot, or documenting your wedding day, I'm here to create images you'll treasure
+          for a lifetime.
+        </p>
+        <Button href="/about" variant="secondary">
+          More About Me
+        </Button>
+      </div>
+    </div>
+  </Container>
+</section>

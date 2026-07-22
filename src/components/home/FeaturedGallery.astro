@@ -1,0 +1,43 @@
+---
+import Container from "../common/Container.astro";
+import SectionTitle from "../common/SectionTitle.astro";
+import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
+
+/** Featured images — Cloudinary public IDs */
+const featuredImages = [
+  { id: "kali-photography/featured/img-1", alt: "Family on the beach at golden hour" },
+  { id: "kali-photography/featured/img-2", alt: "Couple embracing under oak trees" },
+  { id: "kali-photography/featured/img-3", alt: "Senior portrait in natural light" },
+  { id: "kali-photography/featured/img-4", alt: "Wedding first dance" },
+  { id: "kali-photography/featured/img-5", alt: "Newborn lifestyle session at home" },
+  { id: "kali-photography/featured/img-6", alt: "Engagement session at sunset" },
+];
+---
+
+<section class="py-16 md:py-24">
+  <Container>
+    <SectionTitle
+      title="Featured Work"
+      subtitle="A glimpse into recent sessions and the stories behind them."
+    />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {featuredImages.map((image) => (
+        <a
+          href="/portfolio"
+          class="group block overflow-hidden rounded-lg aspect-[3/4]"
+        >
+          <img
+            src={getImageUrl(image.id, { width: 640, crop: "fill", aspectRatio: "3:4" })}
+            srcset={getSrcSet(image.id, { crop: "fill", aspectRatio: "3:4" })}
+            sizes={getSizes("gallery")}
+            alt={image.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </a>
+      ))}
+    </div>
+  </Container>
+</section>

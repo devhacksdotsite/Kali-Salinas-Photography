@@ -1,0 +1,43 @@
+---
+import Button from "../common/Button.astro";
+import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
+
+const heroImage = "kali-photography/hero";
+const heroUrl = getImageUrl(heroImage, { width: 1920, crop: "fill", gravity: "center" });
+const heroSrcSet = getSrcSet(heroImage, { crop: "fill", gravity: "center" });
+---
+
+<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={heroUrl}
+      srcset={heroSrcSet}
+      sizes={getSizes("full")}
+      alt=""
+      class="w-full h-full object-cover"
+      loading="eager"
+      decoding="async"
+    />
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-foreground/30"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6 drop-shadow-lg">
+      Capturing Life's<br />Beautiful Moments
+    </h1>
+    <p class="text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto font-body">
+      Natural, timeless photography for families, couples, and portraits in Arizona &amp; Southern California.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <Button href="/portfolio" variant="primary">
+        View Portfolio
+      </Button>
+      <Button href="/contact" variant="outline" class="border-white text-white hover:bg-white hover:text-foreground">
+        Book a Session
+      </Button>
+    </div>
+  </div>
+</section>
