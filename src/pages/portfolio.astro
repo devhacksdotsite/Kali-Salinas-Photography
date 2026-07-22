@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/common/Container.astro";
+import SectionTitle from "../components/common/SectionTitle.astro";
+import GalleryGrid from "../components/gallery/GalleryGrid.astro";
+import GalleryCard from "../components/gallery/GalleryCard.astro";
+import CategoryFilter from "../components/gallery/CategoryFilter.astro";
+import Lightbox from "../components/gallery/Lightbox.astro";
+import { getCollection } from "astro:content";
+
+const allImages = (await getCollection("portfolio")).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+
+const categories = ["families", "couples", "portraits", "weddings", "lifestyle"];
+---
+
+<BaseLayout
+  title="Portfolio"
+  description="Browse Kali Salinas Photography's portfolio — families, couples, portraits, weddings, and lifestyle sessions in Arizona and Southern California."
+>
+  <section class="py-16 md:py-24">
+    <Container>
+      <SectionTitle
+        title="Portfolio"
+        subtitle="A collection of my favorite moments. Filter by category to explore."
+        as="h1"
+      />
+
+      <CategoryFilter categories={categories} />
+    </Container>
+
+    <GalleryGrid>
+      {allImages.map((entry) => (
+        <div data-category-item={entry.data.category} class="break-inside-avoid mb-4">
+          <GalleryCard
+            image={entry.data.image}
+            alt={entry.data.alt}
+            title={entry.data.title}
+            category={entry.data.category}
+          />
+        </div>
+      ))}
+    </GalleryGrid>
+  </section>
+
+  <Lightbox />
+</BaseLayout>
