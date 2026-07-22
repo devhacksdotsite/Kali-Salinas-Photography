@@ -1,0 +1,114 @@
+---
+import { navLinks } from "../../data/navigation";
+import { socialLinks } from "../../data/social";
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Mobile Menu Overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile navigation"
+>
+  <!-- Backdrop -->
+  <div id="mobile-menu-backdrop" class="absolute inset-0 bg-foreground/50 opacity-0 transition-opacity duration-300"></div>
+
+  <!-- Panel -->
+  <div id="mobile-menu-panel" class="absolute top-0 right-0 h-full w-72 bg-background shadow-xl translate-x-full transition-transform duration-300 flex flex-col">
+    <!-- Close Button -->
+    <div class="flex items-center justify-end p-4">
+      <button
+        id="mobile-menu-close"
+        class="flex items-center justify-center w-10 h-10 text-foreground"
+        aria-label="Close menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Nav Links -->
+    <nav class="flex-1 px-6" aria-label="Mobile navigation">
+      <ul class="space-y-2">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "block py-3 text-lg font-heading no-underline hover:no-underline transition-colors",
+                currentPath === link.href
+                  ? "text-accent"
+                  : "text-foreground hover:text-accent",
+              ]}
+              aria-current={currentPath === link.href ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Social Links -->
+    <div class="px-6 py-6 border-t border-border">
+      <div class="flex items-center gap-4">
+        {socialLinks.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-foreground/60 hover:text-accent transition-colors"
+            aria-label={social.label}
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d={social.icon} />
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const close = document.getElementById("mobile-menu-close");
+  const menu = document.getElementById("mobile-menu");
+  const backdrop = document.getElementById("mobile-menu-backdrop");
+  const panel = document.getElementById("mobile-menu-panel");
+
+  function openMenu() {
+    menu?.classList.remove("hidden");
+    // Trigger animations on next frame
+    requestAnimationFrame(() => {
+      backdrop?.classList.replace("opacity-0", "opacity-100");
+      panel?.classList.replace("translate-x-full", "translate-x-0");
+    });
+    toggle?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    backdrop?.classList.replace("opacity-100", "opacity-0");
+    panel?.classList.replace("translate-x-0", "translate-x-full");
+    toggle?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    // Hide after transition
+    setTimeout(() => menu?.classList.add("hidden"), 300);
+  }
+
+  toggle?.addEventListener("click", openMenu);
+  close?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu?.classList.contains("hidden")) {
+      closeMenu();
+    }
+  });
+</script>

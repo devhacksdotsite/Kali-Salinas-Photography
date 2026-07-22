@@ -7,6 +7,9 @@ import {
   getTwitterTags,
   getWebPageSchema,
 } from "../utils/seo";
+import Navbar from "../components/layout/Navbar.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import Footer from "../components/layout/Footer.astro";
 
 interface Props extends SEOProps {
   /** Additional JSON-LD structured data to inject */
@@ -68,10 +71,11 @@ const webPageSchema = getWebPageSchema(seoProps, currentUrl);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body class="min-h-screen flex flex-col">
-    <!-- Future: Navbar slot here -->
+    <Navbar />
+    <MobileMenu />
     <main class="flex-1">
       <slot />
     </main>
-    <!-- Future: Footer slot here -->
+    <Footer />
   </body>
 </html>
