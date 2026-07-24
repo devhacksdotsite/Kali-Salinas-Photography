@@ -67,7 +67,7 @@ export function getLocalBusinessSchema() {
     "@type": "LocalBusiness",
     name: SITE_NAME,
     description:
-      "Natural family, portrait, and lifestyle photography serving Arizona and Southern California.",
+      "Authentic, heartfelt lifestyle family photography capturing genuine connections and quiet moments. Serving Arizona and Southern California.",
     image: DEFAULT_OG_IMAGE,
     priceRange: "$$",
     url: SITE_URL,
