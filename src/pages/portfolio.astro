@@ -12,7 +12,7 @@ const allImages = (await getCollection("portfolio")).sort(
   (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
 );
 
-const categories = ["families", "couples", "portraits", "weddings", "lifestyle"];
+const categories = ["families", "couples", "portraits", "lifestyle"];
 ---
 
 <BaseLayout

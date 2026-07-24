@@ -29,10 +29,10 @@ export const services: Service[] = [
     image: "kali-photography/services/couples",
   },
   {
-    title: "Weddings & Events",
+    title: "Lifestyle",
     description:
-      "Documenting your most important day with an editorial yet candid approach.",
-    href: "/portfolio?category=weddings",
-    image: "kali-photography/services/wedding",
+      "Documentary-style sessions capturing everyday moments and the beauty in your routine.",
+    href: "/portfolio?category=lifestyle",
+    image: "kali-photography/services/lifestyle",
   },
 ];

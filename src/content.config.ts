@@ -7,7 +7,7 @@ const portfolio = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.enum(["families", "couples", "portraits", "weddings", "lifestyle"]),
+    category: z.enum(["families", "couples", "portraits", "lifestyle"]),
     /** Cloudinary public ID for the image */
     image: z.string(),
     /** Alt text for accessibility */
