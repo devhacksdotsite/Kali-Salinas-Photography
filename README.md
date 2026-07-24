@@ -1,10 +1,10 @@
-# Kali Salinas Photography
+# Nums n' Snugs
 
 A modern, fast, SEO-friendly photography portfolio built with Astro and Tailwind CSS.
 
 ## Overview
 
-Photography-first portfolio site for Kali Salinas Photography, serving Arizona and California. Designed for speed, accessibility, and excellent SEO with a static-first architecture.
+Photography-first portfolio site for Nums n' Snugs, serving Arizona and Southern California. Designed for speed, accessibility, and excellent SEO with a static-first architecture.
 
 ## Tech Stack
 

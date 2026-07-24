@@ -11,8 +11,8 @@ export interface SEOProps {
   noindex?: boolean;
 }
 
-const SITE_NAME = "Kali Salinas Photography";
-const SITE_URL = "https://kalisalinasphotography.com";
+const SITE_NAME = "Nums n' Snugs";
+const SITE_URL = "https://numsandsnugs.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 /**
@@ -70,6 +70,7 @@ export function getLocalBusinessSchema() {
       "Natural family, portrait, and lifestyle photography serving Arizona and Southern California.",
     image: DEFAULT_OG_IMAGE,
     priceRange: "$$",
+    url: SITE_URL,
     address: {
       "@type": "PostalAddress",
       addressRegion: "AZ",
