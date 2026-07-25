@@ -113,6 +113,17 @@ const webPageSchema = getWebPageSchema(seoProps, currentUrl);
           observer.observe(el);
         });
       }
+
+      // Fallback placeholder for broken images
+      document.querySelectorAll<HTMLImageElement>("img").forEach((img) => {
+        img.addEventListener("error", function handleError() {
+          if (!this.dataset.fallback) {
+            this.dataset.fallback = "true";
+            this.srcset = "";
+            this.src = "/placeholder.svg";
+          }
+        });
+      });
     </script>
   </body>
 </html>
