@@ -20,7 +20,7 @@ export const services: Service[] = [
   {
     title: "Classic Mini",
     description:
-      "15 minutes — our most popular session. Real connection, no time pressure.",
+      "15 minutes — my most popular session. Real connection, no time pressure.",
     href: "/pricing",
     image: "kali-photography/services/classic-mini",
     price: "From $200",

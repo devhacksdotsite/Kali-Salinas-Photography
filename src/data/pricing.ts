@@ -38,7 +38,7 @@ export const packages: PricingPackage[] = [
       "Express delivery available",
     ],
     description:
-      "Our most popular mini — enough time to capture real connection without the time commitment.",
+      "My most popular mini — enough time to capture real connection without the time commitment.",
     featured: true,
   },
   {
@@ -90,6 +90,6 @@ export const packages: PricingPackage[] = [
       "Express delivery available",
     ],
     description:
-      "Our most comprehensive session — perfect for families wanting variety or milestone celebrations.",
+      "My most comprehensive session — perfect for families wanting variety or milestone celebrations.",
   },
 ];
