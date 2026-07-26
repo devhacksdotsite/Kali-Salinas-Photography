@@ -8,26 +8,26 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "She captured our family exactly as we are — the tickle fights, the messy hair, my toddler's belly laugh. These aren't just photos, they're memories I can feel.",
+      "She got my kids being KIDS. Like actually running around and laughing and being crazy. I cried when I saw them. Best photos we've ever had.",
     name: "Sarah M.",
-    context: "Family Mini Session",
+    context: "Family Mini",
   },
   {
     quote:
-      "We didn't even realize she was shooting half the time. The candid moments she caught between us are more beautiful than anything we could have posed for.",
+      "We forgot she was even there half the time. The photos look like us, not some stiff version of us trying to smile on command.",
     name: "Jessica & David",
     context: "Couples Session",
   },
   {
     quote:
-      "I was nervous about being in front of the camera, but she made it feel like we were just hanging out. The photos look like a page from a magazine but feel like real life.",
+      "15 minutes and somehow she got the most genuine photos of our family. My husband hates photos and even he said these were amazing.",
     name: "The Nguyen Family",
-    context: "Extended Mini Session",
+    context: "Classic Mini",
   },
   {
     quote:
-      "She got my kids being totally themselves — running, laughing, piling on top of each other. I ugly-cried when I saw the gallery. These are exactly the moments I never want to forget.",
+      "I didn't want the overly edited Pinterest look. These feel real and warm and exactly like our life right now. So so happy.",
     name: "Rachel T.",
-    context: "Classic Mini Session",
+    context: "Extended Mini",
   },
 ];
