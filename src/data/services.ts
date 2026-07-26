@@ -4,35 +4,41 @@ export interface Service {
   href: string;
   /** Cloudinary public ID for the service image */
   image: string;
+  /** Price label */
+  price: string;
 }
 
 export const services: Service[] = [
   {
-    title: "Family Sessions",
+    title: "Quick Mini",
     description:
-      "Relaxed, joyful sessions that capture the connection and love your family shares.",
-    href: "/portfolio?category=families",
-    image: "kali-photography/services/family",
+      "10 minutes — perfect for holiday cards, milestones, or a fresh profile photo.",
+    href: "/pricing",
+    image: "kali-photography/services/quick-mini",
+    price: "From $150",
   },
   {
-    title: "Portraits",
+    title: "Classic Mini",
     description:
-      "Personal and authentic portraits — seniors, headshots, and creative sessions.",
-    href: "/portfolio?category=portraits",
-    image: "kali-photography/services/portrait",
+      "15 minutes — our most popular session. Real connection, no time pressure.",
+    href: "/pricing",
+    image: "kali-photography/services/classic-mini",
+    price: "From $200",
+  },
+  {
+    title: "Extended Mini",
+    description:
+      "30 minutes — more time to explore, play, and capture a wider variety of moments.",
+    href: "/pricing",
+    image: "kali-photography/services/extended-mini",
+    price: "From $275",
   },
   {
     title: "Couples & Engagement",
     description:
-      "Celebrate your love story with natural, romantic imagery in stunning locations.",
-    href: "/portfolio?category=couples",
+      "45 minutes — celebrate your love story with romantic imagery in stunning locations.",
+    href: "/pricing",
     image: "kali-photography/services/couples",
-  },
-  {
-    title: "Lifestyle",
-    description:
-      "Documentary-style sessions capturing everyday moments and the beauty in your routine.",
-    href: "/portfolio?category=lifestyle",
-    image: "kali-photography/services/lifestyle",
+    price: "From $350",
   },
 ];

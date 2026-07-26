@@ -18,7 +18,8 @@ export const packages: PricingPackage[] = [
       "Online gallery with downloads",
       "Print release included",
       "1 outfit / 1 setup",
-      "Perfect for seasonal minis",
+      "1–2 week turnaround",
+      "Express delivery available",
     ],
     description:
       "A quick, fun session — ideal for holiday cards, milestones, or a fresh profile photo.",
@@ -33,6 +34,8 @@ export const packages: PricingPackage[] = [
       "Print release included",
       "1–2 setups",
       "Wardrobe guidance",
+      "1–2 week turnaround",
+      "Express delivery available",
     ],
     description:
       "Our most popular mini — enough time to capture real connection without the time commitment.",
@@ -49,6 +52,8 @@ export const packages: PricingPackage[] = [
       "2–3 setups or outfit changes",
       "Location scouting assistance",
       "Wardrobe guidance",
+      "1–2 week turnaround",
+      "Express delivery available",
     ],
     description:
       "More time to explore, play, and capture a wider variety of moments together.",
@@ -64,6 +69,8 @@ export const packages: PricingPackage[] = [
       "2 location options",
       "Sunset timing coordination",
       "Posing & prompt guidance",
+      "1–2 week turnaround",
+      "Express delivery available",
     ],
     description:
       "Celebrate your love story with romantic imagery in stunning locations.",
@@ -79,6 +86,8 @@ export const packages: PricingPackage[] = [
       "Multiple outfits & locations",
       "Location scouting assistance",
       "Wardrobe guidance",
+      "1–2 week turnaround",
+      "Express delivery available",
     ],
     description:
       "Our most comprehensive session — perfect for families wanting variety or milestone celebrations.",

@@ -9,8 +9,8 @@ import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
 <section class="py-16 md:py-24 bg-accent-light/40 reveal">
   <Container>
     <SectionTitle
-      title="What I Offer"
-      subtitle="Every session is tailored to you — relaxed, authentic, and full of real moments."
+      title="Mini Sessions"
+      subtitle="Relaxed, authentic sessions designed to fit your life — no stiff poses, just real moments."
     />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -28,11 +28,18 @@ import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
             />
           </div>
           <div class="p-5">
-            <h3 class="text-lg mb-2">{service.title}</h3>
+            <h3 class="text-lg mb-1">{service.title}</h3>
+            <p class="text-sm font-semibold text-accent mb-2">{service.price}</p>
             <p class="text-sm text-foreground/60">{service.description}</p>
           </div>
         </Card>
       ))}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="/pricing" class="text-accent font-semibold text-sm hover:underline">
+        View all packages →
+      </a>
     </div>
   </Container>
 </section>

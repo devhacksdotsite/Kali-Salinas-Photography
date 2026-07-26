@@ -8,6 +8,12 @@
 const CLOUD_NAME = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME ?? "demo";
 const BASE_URL = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 
+/**
+ * Cache version — bump this number to force CDN cache invalidation.
+ * Set to empty string to disable.
+ */
+const CACHE_VERSION = "v2";
+
 /** Common responsive breakpoints for srcset generation */
 const DEFAULT_WIDTHS = [320, 480, 640, 768, 1024, 1280, 1536, 1920];
 
@@ -67,7 +73,8 @@ function buildTransformations(options: TransformOptions = {}): string {
  */
 export function getImageUrl(publicId: string, options: TransformOptions = {}): string {
   const transformations = buildTransformations(options);
-  return `${BASE_URL}/${transformations}/${publicId}`;
+  const version = CACHE_VERSION ? `${CACHE_VERSION}/` : "";
+  return `${BASE_URL}/${transformations}/${version}${publicId}`;
 }
 
 /**
