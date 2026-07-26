@@ -65,20 +65,42 @@ export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://numsandsnugs.com",
     name: SITE_NAME,
     description:
-      "Authentic, heartfelt lifestyle family photography capturing genuine connections and quiet moments. Serving Arizona and Southern California.",
+      "Authentic, heartfelt lifestyle family photography capturing genuine connections and quiet moments. Serving Surprise, AZ and the West Valley.",
     image: DEFAULT_OG_IMAGE,
     priceRange: "$$",
     url: SITE_URL,
+    telephone: "",
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Surprise",
       addressRegion: "AZ",
       addressCountry: "US",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 33.6292,
+      longitude: -112.3679,
+    },
     areaServed: [
+      { "@type": "City", name: "Surprise, AZ" },
+      { "@type": "City", name: "Goodyear, AZ" },
+      { "@type": "City", name: "Buckeye, AZ" },
+      { "@type": "City", name: "Peoria, AZ" },
+      { "@type": "City", name: "Avondale, AZ" },
+      { "@type": "City", name: "Litchfield Park, AZ" },
+      { "@type": "City", name: "Sun City, AZ" },
+      { "@type": "City", name: "Glendale, AZ" },
+      { "@type": "AdministrativeArea", name: "West Valley, Phoenix Metro" },
       { "@type": "State", name: "Arizona" },
-      { "@type": "State", name: "California" },
+      { "@type": "AdministrativeArea", name: "Southern California" },
+    ],
+    sameAs: [
+      "https://instagram.com/numsandsnugs",
+      "https://facebook.com/numsandsnugs",
+      "https://pinterest.com/numsandsnugs",
     ],
   };
 }
