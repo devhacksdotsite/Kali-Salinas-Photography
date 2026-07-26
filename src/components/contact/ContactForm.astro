@@ -149,6 +149,28 @@ const sessionTypes = [
 </div>
 
 <script>
+  // Pre-select session type from URL query param (e.g., ?session=Quick+Mini)
+  const urlParams = new URLSearchParams(window.location.search);
+  const sessionParam = urlParams.get("session");
+
+  if (sessionParam) {
+    const select = document.getElementById("session-type") as HTMLSelectElement | null;
+    if (select) {
+      const matchMap: Record<string, string> = {
+        "Quick Mini": "Quick Mini (10 min)",
+        "Classic Mini": "Classic Mini (15 min)",
+        "Extended Mini": "Extended Mini (30 min)",
+        "Couples & Engagement": "Couples / Engagement",
+        "Full Session": "Full Session (60 min)",
+      };
+      const matchedValue = matchMap[sessionParam] ?? sessionParam;
+      const option = Array.from(select.options).find((opt) => opt.value === matchedValue);
+      if (option) {
+        select.value = matchedValue;
+      }
+    }
+  }
+
   // Phone number formatting
   const phoneInput = document.getElementById("phone") as HTMLInputElement | null;
 

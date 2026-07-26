@@ -65,7 +65,7 @@ import { packages } from "../data/pricing";
             </ul>
 
             <Button
-              href="/contact"
+              href={`/contact?session=${encodeURIComponent(pkg.title)}`}
               variant={pkg.featured ? "primary" : "outline"}
               fullWidth
             >
