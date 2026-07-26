@@ -6,11 +6,12 @@
 /* Custom Theme */
 @theme {
   /* Colors */
-  --color-background: #FAF8F6;
+  --color-background: #FDF6F3;
   --color-foreground: #1F1F1F;
-  --color-accent: #8B6B4A;
-  --color-accent-light: #EEEAE5;
-  --color-border: #DDDDDD;
+  --color-accent: #C4847A;
+  --color-accent-light: #FBF0ED;
+  --color-secondary: #D4A853;
+  --color-border: #E8DDD9;
 
   /* Font Families */
   --font-heading: "Cormorant Garamond", serif;
