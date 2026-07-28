@@ -59,6 +59,23 @@ export const packages: PricingPackage[] = [
       "More time to explore, play, and capture a wider variety of moments together.",
   },
   {
+    title: "Portraits",
+    startingPrice: 300,
+    sessionLength: "30 minutes",
+    deliverables: [
+      "15–20 edited digital images",
+      "Online gallery with downloads",
+      "Print release included",
+      "2 outfit changes",
+      "Posing & expression coaching",
+      "Location or studio options",
+      "1–2 week turnaround",
+      "Express delivery available",
+    ],
+    description:
+      "Seniors, headshots, and personal branding — designed to make you look and feel your best.",
+  },
+  {
     title: "Couples & Engagement",
     startingPrice: 350,
     sessionLength: "45 minutes",
