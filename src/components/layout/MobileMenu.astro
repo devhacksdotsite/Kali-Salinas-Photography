@@ -41,8 +41,8 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 "block py-3 text-lg font-heading no-underline hover:no-underline transition-colors",
                 currentPath === link.href
-                  ? "text-accent"
-                  : "text-foreground hover:text-accent",
+                  ? "text-foreground font-bold"
+                  : "text-foreground/50 hover:text-foreground",
               ]}
               aria-current={currentPath === link.href ? "page" : undefined}
             >
