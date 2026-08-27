@@ -2,7 +2,7 @@
 import Button from "../common/Button.astro";
 import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
 
-const heroImage = "kali-photography/hero";
+const heroImage = "615BB448-A5C5-49DE-AE65-3F317F989078";
 const heroUrl = getImageUrl(heroImage, { width: 1920, crop: "fill", gravity: "center" });
 const heroSrcSet = getSrcSet(heroImage, { crop: "fill", gravity: "center" });
 ---
@@ -20,7 +20,7 @@ const heroSrcSet = getSrcSet(heroImage, { crop: "fill", gravity: "center" });
       decoding="async"
     />
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-foreground/30"></div>
+    <div class="absolute inset-0 bg-foreground/15"></div>
   </div>
 
   <!-- Content -->
