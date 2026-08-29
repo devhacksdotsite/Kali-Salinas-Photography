@@ -3,22 +3,45 @@ import Button from "../common/Button.astro";
 import { getImageUrl, getSrcSet, getSizes } from "../../utils/cloudinary";
 
 const heroImage = "615BB448-A5C5-49DE-AE65-3F317F989078";
-const heroUrl = getImageUrl(heroImage, { width: 1920, crop: "fill", gravity: "center" });
-const heroSrcSet = getSrcSet(heroImage, { crop: "fill", gravity: "center" });
+
+// Desktop / landscape crop (wide screens)
+const heroUrl = getImageUrl(heroImage, { width: 1920, crop: "fill", gravity: "auto" });
+const heroSrcSet = getSrcSet(heroImage, { crop: "fill", gravity: "auto" });
+
+// Mobile / portrait crop — taller aspect ratio so the subject isn't over-zoomed
+const heroMobileSrcSet = getSrcSet(
+  heroImage,
+  { crop: "fill", gravity: "auto", aspectRatio: "3:4" },
+  [320, 480, 640, 768],
+);
 ---
 
 <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
   <!-- Background Image -->
   <div class="absolute inset-0 z-0">
-    <img
-      src={heroUrl}
-      srcset={heroSrcSet}
-      sizes={getSizes("full")}
-      alt=""
-      class="w-full h-full object-cover"
-      loading="eager"
-      decoding="async"
-    />
+    <picture>
+      <!-- Portrait crop for small screens -->
+      <source
+        media="(max-width: 767px)"
+        srcset={heroMobileSrcSet}
+        sizes="100vw"
+      />
+      <!-- Landscape crop for larger screens -->
+      <source
+        media="(min-width: 768px)"
+        srcset={heroSrcSet}
+        sizes="100vw"
+      />
+      <img
+        src={heroUrl}
+        srcset={heroSrcSet}
+        sizes={getSizes("full")}
+        alt=""
+        class="w-full h-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
     <!-- Overlay -->
     <div class="absolute inset-0 bg-foreground/15"></div>
   </div>
