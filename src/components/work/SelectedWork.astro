@@ -1,0 +1,21 @@
+---
+import Container from "../common/Container.astro";
+import SectionTitle from "../common/SectionTitle.astro";
+import VideoCard from "./VideoCard.astro";
+import { projects } from "../../data/projects";
+---
+<section id="work" class="scroll-mt-24 border-t border-border py-20 md:py-28">
+  <Container>
+    <SectionTitle title="Selected Work" subtitle="Short-form concepts built for travel, beauty, lifestyle, and tech brands." />
+    {projects.length > 0 ? (
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => <VideoCard project={project} />)}
+      </div>
+    ) : (
+      <div class="rounded-2xl border border-dashed border-accent/40 bg-accent-light/30 px-6 py-16 text-center md:px-12">
+        <p class="font-display text-3xl text-foreground/80">New work is on the way.</p>
+        <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-foreground/60">Kali's portfolio is being updated with fresh creator work. Get in touch to see examples that fit your brand.</p>
+      </div>
+    )}
+  </Container>
+</section>

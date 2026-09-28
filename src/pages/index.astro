@@ -1,29 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getLocalBusinessSchema } from "../utils/seo";
-import { getImageUrl } from "../utils/cloudinary";
 import Hero from "../components/home/Hero.astro";
-import FeaturedGallery from "../components/home/FeaturedGallery.astro";
+import SelectedWork from "../components/work/SelectedWork.astro";
 import Services from "../components/home/Services.astro";
 import AboutPreview from "../components/home/AboutPreview.astro";
-import Testimonials from "../components/home/Testimonials.astro";
-import CTA from "../components/home/CTA.astro";
-import InstagramFeed from "../components/home/InstagramFeed.astro";
-
-const heroImageUrl = getImageUrl("615BB448-A5C5-49DE-AE65-3F317F989078", { width: 1920, crop: "fill", gravity: "center" });
+import ContactCTA from "../components/contact/ContactCTA.astro";
 ---
-
-<BaseLayout
-  title="West Valley AZ Family Photographer | Lifestyle Photography"
-  description="Authentic lifestyle family photography serving Arizona and Southern California. Capturing genuine connections, quiet moments, and the beautiful chaos that makes your family yours."
-  jsonLd={getLocalBusinessSchema()}
-  preloadImage={heroImageUrl}
->
+<BaseLayout title="Kali Salinas — Lifestyle UGC Creator" description="Kali Salinas creates short-form UGC content for travel, beauty, lifestyle, and tech brands." jsonLd={getLocalBusinessSchema()}>
   <Hero />
-  <FeaturedGallery />
+  <SelectedWork />
   <Services />
   <AboutPreview />
-  <Testimonials />
-  <InstagramFeed />
-  <CTA />
+  <ContactCTA />
 </BaseLayout>
