@@ -11,8 +11,8 @@ export interface SEOProps {
   noindex?: boolean;
 }
 
-const SITE_NAME = "Nums n' Snugs";
-const SITE_URL = "https://numsandsnugs.com";
+const SITE_NAME = "Kali Salinas";
+const SITE_URL = "https://kalimaries.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 /**
@@ -59,49 +59,22 @@ export function getTwitterTags(props: SEOProps) {
 }
 
 /**
- * Generate JSON-LD structured data for a LocalBusiness (Photography).
+ * Generate JSON-LD structured data for the creator.
  */
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://numsandsnugs.com",
+    "@type": "Person",
+    "@id": "https://kalimaries.com/#kali-salinas",
     name: SITE_NAME,
     description:
-      "Authentic, heartfelt lifestyle family photography capturing genuine connections and quiet moments. Serving Surprise, AZ and the West Valley.",
+      "Arizona-based UGC creator creating travel, beauty, lifestyle, and tech content for brands.",
     image: DEFAULT_OG_IMAGE,
-    priceRange: "$$",
     url: SITE_URL,
-    telephone: "",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Surprise",
-      addressRegion: "AZ",
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 33.6292,
-      longitude: -112.3679,
-    },
-    areaServed: [
-      { "@type": "City", name: "Surprise, AZ" },
-      { "@type": "City", name: "Goodyear, AZ" },
-      { "@type": "City", name: "Buckeye, AZ" },
-      { "@type": "City", name: "Peoria, AZ" },
-      { "@type": "City", name: "Avondale, AZ" },
-      { "@type": "City", name: "Litchfield Park, AZ" },
-      { "@type": "City", name: "Sun City, AZ" },
-      { "@type": "City", name: "Glendale, AZ" },
-      { "@type": "AdministrativeArea", name: "West Valley, Phoenix Metro" },
-      { "@type": "State", name: "Arizona" },
-      { "@type": "AdministrativeArea", name: "Southern California" },
-    ],
-    sameAs: [
-      "https://instagram.com/numsandsnugs",
-      "https://facebook.com/numsandsnugs",
-      "https://pinterest.com/numsandsnugs",
-    ],
+    jobTitle: "UGC Creator",
+    email: "mailto:Kalisalinasm@gmail.com",
+    address: { "@type": "PostalAddress", addressRegion: "AZ", addressCountry: "US" },
+    sameAs: ["https://www.tiktok.com/@kalixmaries"],
   };
 }
 

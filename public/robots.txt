@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://numsandsnugs.com/sitemap-index.xml
+Sitemap: https://kalimaries.com/sitemap-index.xml

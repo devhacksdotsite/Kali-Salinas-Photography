@@ -6,12 +6,12 @@
 /* Custom Theme */
 @theme {
   /* Colors */
-  --color-background: #FFFFFF;
-  --color-foreground: #1A1A1A;
-  --color-accent: #1A1A1A;
-  --color-accent-light: #F5F5F5;
-  --color-secondary: #555555;
-  --color-border: #E0E0E0;
+  --color-background: #FBF7F5;
+  --color-foreground: #2C2526;
+  --color-accent: #A65D69;
+  --color-accent-light: #F4E6E7;
+  --color-secondary: #765F68;
+  --color-border: #E5D9D8;
 
   /* Font Families */
   --font-heading: "Cormorant Garamond", serif;
@@ -28,6 +28,7 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   h1,
@@ -64,6 +65,11 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #FFFFFF;
   }
 
   img {
