@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#FBF7F5"/>
+  <circle cx="1040" cy="112" r="190" fill="#F4E6E7"/>
+  <circle cx="1040" cy="112" r="116" stroke="#A65D69" stroke-width="2" opacity=".45"/>
+  <path d="M100 492H1100" stroke="#E5D9D8" stroke-width="2"/>
+  <text x="100" y="174" fill="#A65D69" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="7">KALI SALINAS</text>
+  <text x="100" y="286" fill="#2C2526" font-family="Georgia, serif" font-size="76">Lifestyle UGC</text>
+  <text x="100" y="372" fill="#2C2526" font-family="Georgia, serif" font-size="76">for brands people love.</text>
+  <text x="100" y="450" fill="#765F68" font-family="Arial, sans-serif" font-size="23" letter-spacing="1">TRAVEL  ·  BEAUTY  ·  LIFESTYLE  ·  TECH</text>
+</svg>

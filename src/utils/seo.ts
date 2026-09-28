@@ -13,13 +13,13 @@ export interface SEOProps {
 
 const SITE_NAME = "Kali Salinas";
 const SITE_URL = "https://kalimaries.com";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.svg`;
 
 /**
  * Generate a full page title with site name suffix.
  */
 export function getPageTitle(title: string): string {
-  if (title === SITE_NAME) return title;
+  if (title === SITE_NAME || title.includes(SITE_NAME)) return title;
   return `${title} | ${SITE_NAME}`;
 }
 
@@ -42,7 +42,9 @@ export function getOpenGraphTags(props: SEOProps, url: string) {
     "og:type": props.ogType ?? "website",
     "og:url": url,
     "og:image": resolveImageUrl(props.ogImage),
+    "og:image:alt": "Kali Salinas — Lifestyle UGC creator",
     "og:site_name": SITE_NAME,
+    "og:locale": "en_US",
   };
 }
 
@@ -55,6 +57,7 @@ export function getTwitterTags(props: SEOProps) {
     "twitter:title": getPageTitle(props.title),
     "twitter:description": props.description,
     "twitter:image": resolveImageUrl(props.ogImage),
+    "twitter:image:alt": "Kali Salinas — Lifestyle UGC creator",
   };
 }
 
