@@ -12,6 +12,7 @@ export default defineConfig({
     }),
   ],
   vite: {
+    cacheDir: process.env.VITE_CACHE_DIR ?? "./.astro-cache",
     plugins: [tailwindcss()],
   },
 });

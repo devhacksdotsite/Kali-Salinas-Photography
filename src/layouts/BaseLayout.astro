@@ -94,6 +94,7 @@ const webPageSchema = getWebPageSchema(seoProps, currentUrl);
 
     <!-- Scroll reveal observer -->
     <script>
+      document.documentElement.classList.add("js");
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (!prefersReducedMotion) {
