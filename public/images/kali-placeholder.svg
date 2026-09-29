@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" fill="none">
+  <rect width="900" height="1200" fill="#E8D9D2"/>
+  <circle cx="690" cy="210" r="250" fill="#F4E6E7"/>
+  <path d="M0 880C130 760 260 830 380 910C520 1004 655 1005 900 824V1200H0V880Z" fill="#CFA9A3"/>
+  <circle cx="450" cy="420" r="145" fill="#A65D69" opacity=".86"/>
+  <path d="M220 1010C245 812 325 720 450 720C575 720 655 812 680 1010H220Z" fill="#765F68" opacity=".9"/>
+  <text x="72" y="1030" fill="#FBF7F5" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="5">KALI SALINAS</text>
+  <text x="72" y="1080" fill="#FBF7F5" font-family="Arial, sans-serif" font-size="18" letter-spacing="2">PORTRAIT PLACEHOLDER</text>
+</svg>

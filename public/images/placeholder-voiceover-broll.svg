@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280" fill="none">
+  <rect width="720" height="1280" fill="#E8D9D2"/>
+  <path d="M0 700C180 580 320 860 500 700C590 620 650 620 720 650V1280H0V700Z" fill="#D9BBB1"/>
+  <circle cx="138" cy="220" r="110" fill="#F4E6E7"/>
+  <text x="72" y="955" fill="#A65D69" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="5">PLACEHOLDER</text>
+  <text x="72" y="1020" fill="#2C2526" font-family="Georgia, serif" font-size="54">Voiceover + B-roll</text>
+  <text x="72" y="1080" fill="#765F68" font-family="Arial, sans-serif" font-size="22">Replace with approved work</text>
+</svg>

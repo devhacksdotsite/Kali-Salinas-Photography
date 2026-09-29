@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280" fill="none">
+  <rect width="720" height="1280" fill="#F4E6E7"/>
+  <circle cx="570" cy="190" r="210" fill="#E4C2C7"/>
+  <rect x="76" y="430" width="568" height="430" rx="28" fill="#FBF7F5"/>
+  <text x="76" y="975" fill="#A65D69" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="5">PLACEHOLDER</text>
+  <text x="76" y="1040" fill="#2C2526" font-family="Georgia, serif" font-size="54">Product Demo</text>
+  <text x="76" y="1100" fill="#765F68" font-family="Arial, sans-serif" font-size="22">Replace with approved work</text>
+</svg>
