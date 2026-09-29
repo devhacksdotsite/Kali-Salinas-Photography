@@ -1,20 +1,28 @@
-name: Deploy to AWS
+name: Deploy Kali UGC portfolio
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-kalimaries-production
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -25,49 +33,38 @@ jobs:
 
       - name: Build site
         run: npm run build
-        env:
-          PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.PUBLIC_CLOUDINARY_CLOUD_NAME }}
-          PUBLIC_FORMSPREE_ENDPOINT: ${{ secrets.PUBLIC_FORMSPREE_ENDPOINT }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
           aws-region: us-east-1
 
-      - name: Sync to S3
+      - name: Upload immutable assets
         run: |
-          aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }} \
+          aws s3 sync dist/ s3://kalimaries.com \
             --delete \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "*.html" \
-            --exclude "sitemap-*" \
-            --exclude "robots.txt"
+            --exclude "robots.txt" \
+            --exclude "sitemap*.xml"
 
-          aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }} \
-            --delete \
-            --cache-control "public, max-age=0, must-revalidate" \
-            --include "*.html" \
-            --include "sitemap-*" \
-            --include "robots.txt" \
-            --content-type "text/html" \
+      - name: Upload HTML and crawl files
+        run: |
+          aws s3 sync dist/ s3://kalimaries.com \
+            --cache-control "no-cache, no-store, must-revalidate" \
             --exclude "*" \
             --include "*.html"
 
-          aws s3 cp dist/robots.txt s3://${{ secrets.AWS_S3_BUCKET }}/robots.txt \
-            --cache-control "public, max-age=86400"
-
-          aws s3 cp dist/sitemap-index.xml s3://${{ secrets.AWS_S3_BUCKET }}/sitemap-index.xml \
+          aws s3 cp dist/robots.txt s3://kalimaries.com/robots.txt \
             --cache-control "public, max-age=86400" \
-            --content-type "application/xml"
+            --content-type "text/plain"
 
-          aws s3 cp dist/sitemap-0.xml s3://${{ secrets.AWS_S3_BUCKET }}/sitemap-0.xml \
-            --cache-control "public, max-age=86400" \
-            --content-type "application/xml"
+          for sitemap in dist/sitemap*.xml; do
+            aws s3 cp "$sitemap" "s3://kalimaries.com/$(basename "$sitemap")" \
+              --cache-control "public, max-age=86400" \
+              --content-type "application/xml"
+          done
 
       - name: Invalidate CloudFront cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id E1A03TVWDXLSLN --paths '/*'
