@@ -15,14 +15,15 @@ export interface Project {
 // Keep the video and poster filenames aligned so media can be reviewed locally.
 export const projects: Project[] = [
   {
-    id: "placeholder-product-demo",
-    title: "Placeholder Product Demo",
-    category: "Product Demo",
-    format: "Talking Head",
-    video: "/videos/placeholder-product-demo.mp4",
-    poster: "/images/placeholder-product-demo.svg",
-    alt: "Placeholder product demo video, to be replaced with approved portfolio work",
-    description: "Placeholder media — replace before launch",
+    id: "terez-honor-eye-patches",
+    title: "Caffeine Hyaluronic Acid Eye Gel Patch",
+    brand: "Terez & Honor",
+    category: "Beauty",
+    format: "Product Demo",
+    video: "/videos/terez-honor-eye-patches.mp4",
+    poster: "/images/terez-honor-eye-patches.jpg",
+    alt: "Terez & Honor Caffeine Hyaluronic Acid Eye Gel Patch being lifted from its jar",
+    description: "A close-up beauty product demo highlighting the cooling gel texture",
   },
   {
     id: "placeholder-screen-recording",
