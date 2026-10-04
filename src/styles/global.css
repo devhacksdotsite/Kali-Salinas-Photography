@@ -119,15 +119,74 @@
 /* Scroll-triggered reveal animations */
 @layer utilities {
   .reveal {
-    opacity: 0.98;
-    transform: translateY(18px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
   }
 
-  .reveal.revealed {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(42px);
+  }
+
+  .js .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .reveal-child {
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .js .reveal-child {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  .js .reveal.revealed .reveal-child,
+  .js .reveal-fade.revealed .reveal-child {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-card {
+    transition-duration: 0.9s;
+  }
+
+  .reveal-image {
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .js .reveal-image {
+    transform: scale(0.94);
+  }
+
+  .js .reveal.revealed .reveal-image {
+    transform: scale(1);
+  }
+
+  .reveal-media {
+    will-change: filter, transform;
+  }
+
+  .js .reveal-media.is-focused {
+    animation: media-focus 2.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes media-focus {
+    0% {
+      filter: blur(2px);
+      transform: scale(1.025);
+    }
+    52% {
+      filter: blur(0);
+      transform: scale(0.995);
+    }
+    100% {
+      filter: blur(0);
+      transform: scale(1);
+    }
   }
 
   /* Stagger delays for child elements */
@@ -138,26 +197,32 @@
 
   /* Fade in only (no slide) */
   .reveal-fade {
-    opacity: 0.9;
-    transform: translateY(12px);
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
   }
 
-  .reveal-fade.revealed {
+  .js .reveal-fade {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .js .reveal-fade.revealed {
     opacity: 1;
     transform: translateY(0);
   }
 
   /* Scale up subtle */
   .reveal-scale {
-    opacity: 0.98;
     transform: scale(0.95);
     transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
   }
 
-  .reveal-scale.revealed {
+  .js .reveal-scale {
+    opacity: 0;
+  }
+
+  .js .reveal-scale.revealed {
     opacity: 1;
     transform: scale(1);
   }
@@ -169,11 +234,15 @@
     scroll-behavior: auto;
   }
 
-  .reveal,
-  .reveal-fade,
-  .reveal-scale {
+  .js .reveal,
+  .js .reveal-fade,
+  .js .reveal-scale,
+  .js .reveal-child,
+  .js .reveal-media {
     opacity: 1;
+    filter: none;
     transform: none;
     transition: none;
+    animation: none;
   }
 }

@@ -9,7 +9,7 @@ import { projects } from "../../data/projects";
     <SectionTitle title="Selected Work" subtitle="Short-form concepts built for travel, beauty, lifestyle, and tech brands." />
     {projects.length > 0 ? (
       <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => <VideoCard project={project} />)}
+        {projects.map((project, index) => <VideoCard project={project} index={index} />)}
       </div>
     ) : (
       <div class="rounded-2xl border border-dashed border-accent/40 bg-accent-light/30 px-6 py-16 text-center md:px-12">

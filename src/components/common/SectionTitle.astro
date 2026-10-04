@@ -26,7 +26,7 @@ const alignClass: Record<string, string> = {
   right: "text-right",
 };
 
-const wrapperClasses = ["mb-12", alignClass[align], className]
+const wrapperClasses = ["mb-12", "reveal-child", alignClass[align], className]
   .filter(Boolean)
   .join(" ");
 ---

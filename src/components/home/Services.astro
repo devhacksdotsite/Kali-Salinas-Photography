@@ -7,7 +7,7 @@ const services = [["UGC Ads", "Short-form videos designed for paid or organic so
   <Container>
     <SectionTitle title="What I Create" subtitle="Thoughtful, relatable content that helps people understand why your product belongs in their life." />
     <div class="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2">
-      {services.map(([title, description], index) => <div class="border-t border-border pt-5"><div class="mb-3 flex items-baseline gap-4"><span class="text-xs text-accent">0{index + 1}</span><h3 class="text-2xl">{title}</h3></div><p class="max-w-md text-sm leading-relaxed text-foreground/60">{description}</p></div>)}
+      {services.map(([title, description], index) => <div class="reveal-child border-t border-border pt-5" style={`--reveal-delay: ${index * 100}ms`}><div class="mb-3 flex items-baseline gap-4"><span class="text-xs text-accent">0{index + 1}</span><h3 class="text-2xl">{title}</h3></div><p class="max-w-md text-sm leading-relaxed text-foreground/60">{description}</p></div>)}
     </div>
   </Container>
 </section>
