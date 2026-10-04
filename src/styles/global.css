@@ -31,6 +31,27 @@
     scroll-behavior: smooth;
   }
 
+  body {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-background);
+  }
+
+  /* Echo the placeholder covers with soft shapes and hand-drawn lines, without the card text. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.85;
+    background-image: url("/images/site-background.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: saturate(0.8);
+  }
+
   h1,
   h2,
   h3,
