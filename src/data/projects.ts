@@ -48,6 +48,17 @@ export const projects: Project[] = [
     description: "A soft, everyday baby-care product showcase featuring Tubby Todd essentials",
   },
   {
+    id: "familywall-app-walkthrough",
+    title: "FamilyWall App",
+    brand: "FamilyWall",
+    category: "Tech",
+    format: "App Walkthrough",
+    video: "/videos/familywall-app-walkthrough.mp4",
+    poster: "/images/familywall-app-walkthrough.jpg",
+    alt: "FamilyWall family organization app dashboard showing lists, calendar, budget, and documents",
+    description: "A clear app walkthrough showing how FamilyWall keeps household life organized",
+  },
+  {
     id: "placeholder-screen-recording",
     title: "Placeholder Screen Recording",
     category: "Screen Recording",
