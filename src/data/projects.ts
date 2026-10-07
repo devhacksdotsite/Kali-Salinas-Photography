@@ -37,6 +37,17 @@ export const projects: Project[] = [
     description: "A warm, everyday product moment featuring Little Spoon’s strawberry banana shake",
   },
   {
+    id: "tubby-todd-all-over-products",
+    title: "All Over Ointment + Hair & Body Wash",
+    brand: "Tubby Todd",
+    category: "Lifestyle",
+    format: "Product Demo",
+    video: "/videos/tubby-todd-all-over-products.mp4",
+    poster: "/images/tubby-todd-all-over-products.jpg",
+    alt: "Tubby Todd All Over Ointment held in front of the brand's Hair & Body Wash",
+    description: "A soft, everyday baby-care product showcase featuring Tubby Todd essentials",
+  },
+  {
     id: "placeholder-screen-recording",
     title: "Placeholder Screen Recording",
     category: "Screen Recording",
