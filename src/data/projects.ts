@@ -59,6 +59,17 @@ export const projects: Project[] = [
     description: "A clear app walkthrough showing how FamilyWall keeps household life organized",
   },
   {
+    id: "olive-june-press-ons",
+    title: "Instant Mani Press-Ons",
+    brand: "Olive & June",
+    category: "Beauty",
+    format: "Product Demo",
+    video: "/videos/olive-june-press-ons.mp4",
+    poster: "/images/olive-june-press-ons.jpg",
+    alt: "Olive & June Instant Mani press-on nails in a deep red shade",
+    description: "A polished beauty product showcase for Olive & June's at-home manicure",
+  },
+  {
     id: "placeholder-screen-recording",
     title: "Placeholder Screen Recording",
     category: "Screen Recording",
