@@ -66,5 +66,15 @@ jobs:
               --content-type "application/xml"
           done
 
+      - name: Upload clean route aliases
+        run: |
+          while IFS= read -r -d '' index; do
+            route="${index#dist/}"
+            route="${route%/index.html}"
+            aws s3 cp "$index" "s3://kalimaries.com/$route" \
+              --cache-control "no-cache, no-store, must-revalidate" \
+              --content-type "text/html"
+          done < <(find dist -mindepth 2 -type f -name index.html -print0)
+
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id E1A03TVWDXLSLN --paths '/*'
