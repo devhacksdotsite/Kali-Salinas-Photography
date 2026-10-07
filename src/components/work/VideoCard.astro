@@ -3,7 +3,7 @@ import type { Project } from "../../data/projects";
 interface Props { project: Project; index?: number; }
 const { project, index = 0 } = Astro.props;
 ---
-<article class="group reveal-child reveal-card" style={`--reveal-delay: ${index * 120}ms`}>
+<article class="group reveal-child reveal-card lg:justify-self-center lg:max-w-[300px]" style={`--reveal-delay: ${index * 120}ms`}>
   <div class="reveal-media aspect-[9/16] overflow-hidden rounded-2xl bg-accent-light/70 shadow-sm">
     <video
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
