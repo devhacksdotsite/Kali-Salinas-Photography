@@ -26,6 +26,17 @@ export const projects: Project[] = [
     description: "A close-up beauty product demo highlighting the cooling gel texture",
   },
   {
+    id: "little-spoon-strawberry-banana-shake",
+    title: "Strawberry Banana Shake",
+    brand: "Little Spoon",
+    category: "Lifestyle",
+    format: "Product Demo",
+    video: "/videos/little-spoon-strawberry-banana-shake.mp4",
+    poster: "/images/little-spoon-strawberry-banana-shake.jpg",
+    alt: "Little Spoon Strawberry Banana Shake pouch being opened over a child’s tray",
+    description: "A warm, everyday product moment featuring Little Spoon’s strawberry banana shake",
+  },
+  {
     id: "placeholder-screen-recording",
     title: "Placeholder Screen Recording",
     category: "Screen Recording",
