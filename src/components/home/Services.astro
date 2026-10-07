@@ -1,11 +1,11 @@
 ---
 import Container from "../common/Container.astro";
 import SectionTitle from "../common/SectionTitle.astro";
-const services = [["UGC Ads", "Short-form videos designed for paid or organic social."], ["Product Demos", "Show the product naturally while explaining why it matters."], ["Voiceover + B-roll", "Narrative-driven content with an elevated, editorial feel."], ["Screen Recording", "Clear, approachable content for apps, tools, and tech products."]];
+const services = [["UGC Ads", "Scroll-stopping videos that feel right at home on someone's feed."], ["Product Demos", "Showing how products actually look, work, and fit into everyday life."], ["Voiceovers + B-roll", "Everyday moments paired with natural, conversational storytelling."], ["Screen Recordings", "Making apps, websites, and digital products easy to understand and use."]];
 ---
 <section class="py-20 md:py-28 reveal">
   <Container>
-    <SectionTitle title="What I Create" subtitle="Thoughtful, relatable content that helps people understand why your product belongs in their life." />
+    <SectionTitle title="What I Create" subtitle="From talking to the camera to capturing the little details, here's how I bring products and stories to life." />
     <div class="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2">
       {services.map(([title, description], index) => <div class="reveal-child border-t border-border pt-5" style={`--reveal-delay: ${index * 100}ms`}><div class="mb-3 flex items-baseline gap-4"><span class="text-xs text-accent">0{index + 1}</span><h3 class="text-2xl">{title}</h3></div><p class="max-w-md text-sm leading-relaxed text-foreground/60">{description}</p></div>)}
     </div>

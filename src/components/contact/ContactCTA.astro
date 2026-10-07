@@ -7,7 +7,10 @@ import { creator } from "../../data/creator";
     <div class="reveal-child text-center">
       <p class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Have a product that needs content?</p>
       <h2 class="text-4xl md:text-6xl">Let's work together.</h2>
-      <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-foreground/65">Tell Kali a little about your brand, product, and the story you want to tell.</p>
+      <div class="mx-auto mt-5 max-w-xl space-y-4 text-base leading-relaxed text-foreground/65">
+        <p>Have a product you think I'd love? I'd love to hear about it.</p>
+        <p>Let's create something that feels natural, looks beautiful, and makes people want to know more.</p>
+      </div>
       <a href={`mailto:${creator.email}`} class="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 font-body text-sm font-semibold text-white transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">{creator.email}</a>
       <a href={creator.social.tiktok} target="_blank" rel="noopener noreferrer" class="mt-5 block text-sm font-semibold text-foreground/70 underline decoration-accent/50 underline-offset-4 transition-colors hover:text-accent">TikTok {creator.social.tiktokHandle} ↗</a>
     </div>

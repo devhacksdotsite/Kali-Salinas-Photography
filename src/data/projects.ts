@@ -23,7 +23,7 @@ export const projects: Project[] = [
     video: "/videos/terez-honor-eye-patches.mp4",
     poster: "/images/terez-honor-eye-patches.jpg",
     alt: "Terez & Honor Caffeine Hyaluronic Acid Eye Gel Patch being lifted from its jar",
-    description: "A close-up beauty product demo highlighting the cooling gel texture",
+    description: "An up-close look at the texture, application, and little details that make this product stand out.",
   },
   {
     id: "little-spoon-strawberry-banana-shake",
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     video: "/videos/little-spoon-strawberry-banana-shake.mp4",
     poster: "/images/little-spoon-strawberry-banana-shake.jpg",
     alt: "Little Spoon Strawberry Banana Shake pouch being opened over a child’s tray",
-    description: "A warm, everyday product moment featuring Little Spoon’s strawberry banana shake",
+    description: "A little everyday moment featuring Little Spoon's strawberry banana shake and how it fits into a busy day.",
   },
   {
     id: "tubby-todd-all-over-products",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     video: "/videos/tubby-todd-all-over-products.mp4",
     poster: "/images/tubby-todd-all-over-products.jpg",
     alt: "Tubby Todd All Over Ointment held in front of the brand's Hair & Body Wash",
-    description: "A soft, everyday baby-care product showcase featuring Tubby Todd essentials",
+    description: "A closer look at an everyday skincare favorite, highlighting the product and the little details that make it special.",
   },
   {
     id: "familywall-app-walkthrough",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     video: "/videos/familywall-app-walkthrough.mp4",
     poster: "/images/familywall-app-walkthrough.jpg",
     alt: "FamilyWall family organization app dashboard showing lists, calendar, budget, and documents",
-    description: "A clear app walkthrough showing how FamilyWall keeps household life organized",
+    description: "A quick look at FamilyWall's colorful dashboard and the everyday tools it brings together.",
   },
   {
     id: "olive-june-press-ons",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     video: "/videos/olive-june-press-ons.mp4",
     poster: "/images/olive-june-press-ons.jpg",
     alt: "Olive & June Instant Mani press-on nails in a deep red shade",
-    description: "A polished beauty product showcase for Olive & June's at-home manicure",
+    description: "A close-up look at Olive & June's deep red Instant Mani press-ons and the details of the set.",
   },
   {
     id: "nanit-baby-monitor",
@@ -78,6 +78,6 @@ export const projects: Project[] = [
     video: "/videos/nanit-baby-monitor.mp4",
     poster: "/images/nanit-baby-monitor.jpg",
     alt: "Nanit baby monitor tablet held by a parent in a nursery",
-    description: "A warm, real-life product demo showing Nanit in a parent’s daily routine",
+    description: "A natural, everyday moment with a parent exploring the Nanit baby monitor.",
   },
 ];

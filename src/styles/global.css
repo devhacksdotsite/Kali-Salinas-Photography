@@ -162,7 +162,8 @@
     transform: scale(0.94);
   }
 
-  .js .reveal.revealed .reveal-image {
+  .js .reveal.revealed .reveal-image,
+  .js .reveal-fade.revealed .reveal-image {
     transform: scale(1);
   }
 

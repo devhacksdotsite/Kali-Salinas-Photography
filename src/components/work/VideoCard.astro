@@ -4,7 +4,7 @@ interface Props { project: Project; index?: number; }
 const { project, index = 0 } = Astro.props;
 ---
 <article class="group reveal-child reveal-card lg:justify-self-center lg:max-w-[300px]" style={`--reveal-delay: ${index * 120}ms`}>
-  <div class="reveal-media aspect-[9/16] overflow-hidden rounded-2xl bg-accent-light/70 shadow-sm">
+  <div class="reveal-media relative aspect-[9/16] overflow-hidden rounded-2xl bg-accent-light/70 shadow-sm">
     <video
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
       controls
@@ -18,15 +18,17 @@ const { project, index = 0 } = Astro.props;
       <source src={project.video} type="video/mp4" />
       Your browser does not support embedded video.
     </video>
+    <div class="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-center p-4">
+      <div class="rounded-full bg-background/85 px-3 py-1.5 text-center text-[10px] uppercase leading-relaxed tracking-[0.16em] text-accent shadow-sm backdrop-blur-sm">
+        <span>{project.category}</span>
+        {project.format && <span class="mt-0.5 block text-foreground/55 tracking-[0.1em]">{project.format}</span>}
+      </div>
+    </div>
   </div>
   <div class="mt-4 flex items-start justify-between gap-4">
     <div class="min-w-0 flex-1">
       <h3 class="font-body text-sm font-semibold leading-snug">{project.brand ?? project.title}</h3>
       {project.description && <p class="mt-1 text-xs leading-relaxed text-foreground/60">{project.description}</p>}
-    </div>
-    <div class="w-20 shrink-0 text-right text-[10px] uppercase leading-relaxed tracking-[0.12em] text-accent">
-      <span>{project.category}</span>
-      {project.format && <span class="mt-1 block text-foreground/40">{project.format}</span>}
     </div>
   </div>
 </article>
