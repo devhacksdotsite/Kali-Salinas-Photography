@@ -230,6 +230,17 @@
   }
 }
 
+@media (max-width: 639px) {
+  .reveal-card {
+    transition-duration: 0.65s;
+    transition-delay: 0ms;
+  }
+
+  .js .reveal-media.is-focused {
+    animation-duration: 1.4s;
+  }
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   html {
