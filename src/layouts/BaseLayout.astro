@@ -178,6 +178,11 @@ const webPageSchema = getWebPageSchema(seoProps, currentUrl);
           }
         });
       });
+
+      document.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
+        video.addEventListener("contextmenu", (event) => event.preventDefault());
+        video.addEventListener("dragstart", (event) => event.preventDefault());
+      });
     </script>
   </body>
 </html>

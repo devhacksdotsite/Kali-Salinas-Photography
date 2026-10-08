@@ -8,8 +8,10 @@ const { project, index = 0 } = Astro.props;
     <video
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
       controls
-      controlsList="nodownload"
+      controlsList="nodownload noremoteplayback"
       disablePictureInPicture
+      disableRemotePlayback
+      draggable="false"
       preload="none"
       poster={project.poster}
       playsinline
