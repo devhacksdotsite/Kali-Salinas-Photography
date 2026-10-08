@@ -80,4 +80,15 @@ export const projects: Project[] = [
     alt: "Nanit baby monitor tablet held by a parent in a nursery",
     description: "A natural, everyday moment with a parent exploring the Nanit baby monitor.",
   },
+  {
+    id: "good-gather-decaf-caramel-macchiato",
+    title: "Decaf Caramel Macchiato",
+    brand: "Good & Gather",
+    category: "Lifestyle",
+    format: "Product Demo",
+    video: "/videos/good-gather-decaf-caramel-macchiato.mp4",
+    poster: "/images/good-gather-decaf-caramel-macchiato.jpg",
+    alt: "Good & Gather decaf caramel macchiato coffee enjoyed in a patterned mug",
+    description: "A cozy coffee moment featuring Good & Gather's decaf caramel macchiato flavor.",
+  },
 ];
