@@ -130,6 +130,44 @@ const webPageSchema = getWebPageSchema(seoProps, currentUrl);
         });
       }
 
+      const sectionNavLinks = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-target]"));
+      const sectionTargets = sectionNavLinks
+        .map((link) => document.getElementById(link.dataset.navTarget ?? ""))
+        .filter((section): section is HTMLElement => Boolean(section));
+
+      function updateActiveNav() {
+        const hashTarget = window.location.hash.slice(1);
+        const currentSection = hashTarget && document.getElementById(hashTarget)
+          ? hashTarget
+          : [...sectionTargets]
+              .reverse()
+              .find((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.35)?.id ?? "";
+
+        sectionNavLinks.forEach((link) => {
+          const isActive = link.dataset.navTarget === currentSection;
+          link.classList.toggle("nav-active", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }
+
+      let navUpdatePending = false;
+      function scheduleNavUpdate() {
+        if (navUpdatePending) return;
+        navUpdatePending = true;
+        requestAnimationFrame(() => {
+          updateActiveNav();
+          navUpdatePending = false;
+        });
+      }
+
+      window.addEventListener("scroll", scheduleNavUpdate, { passive: true });
+      window.addEventListener("hashchange", updateActiveNav);
+      updateActiveNav();
+
       // Fallback placeholder for broken images
       document.querySelectorAll<HTMLImageElement>("img").forEach((img) => {
         img.addEventListener("error", function handleError() {

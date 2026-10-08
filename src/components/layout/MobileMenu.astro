@@ -2,7 +2,6 @@
 import { navLinks } from "../../data/navigation";
 import { socialLinks } from "../../data/social";
 
-const currentPath = Astro.url.pathname;
 ---
 
 <!-- Mobile Menu Overlay -->
@@ -38,13 +37,11 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={link.href}
+              data-nav-target={link.href.split("#")[1]}
               class:list={[
                 "block py-3 text-lg font-heading no-underline hover:no-underline transition-colors",
-                currentPath === link.href
-                  ? "text-foreground font-bold"
-                  : "text-foreground/50 hover:text-foreground",
+                "text-foreground/50 hover:text-foreground",
               ]}
-              aria-current={currentPath === link.href ? "page" : undefined}
             >
               {link.label}
             </a>

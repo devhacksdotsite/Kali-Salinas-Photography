@@ -52,6 +52,27 @@
     filter: saturate(0.8);
   }
 
+  [data-nav-target].nav-active {
+    color: var(--color-accent) !important;
+    font-weight: 600 !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  #work .reveal-child {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  #work .reveal-media,
+  #work .reveal-media.is-focused {
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
   h1,
   h2,
   h3,
@@ -232,12 +253,21 @@
 
 @media (max-width: 639px) {
   .reveal-card {
+    opacity: 1;
+    transform: none;
     transition-duration: 0.65s;
     transition-delay: 0ms;
   }
 
-  .js .reveal-media.is-focused {
-    animation-duration: 1.4s;
+  .js .reveal-card {
+    transition: none;
+  }
+
+  .js .reveal-card .reveal-media,
+  .js .reveal-card .reveal-media.is-focused {
+    filter: none;
+    transform: none;
+    animation: none;
   }
 }
 

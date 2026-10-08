@@ -2,7 +2,6 @@
 import { navLinks } from "../../data/navigation";
 import Container from "../common/Container.astro";
 
-const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
@@ -19,13 +18,11 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={link.href}
+              data-nav-target={link.href.split("#")[1]}
               class:list={[
                 "text-sm font-medium tracking-wide transition-colors no-underline hover:no-underline",
-                currentPath === link.href
-                  ? "text-foreground font-semibold underline underline-offset-4 decoration-2"
-                  : "text-foreground/50 hover:text-foreground",
+                "text-foreground/50 hover:text-foreground",
               ]}
-              aria-current={currentPath === link.href ? "page" : undefined}
             >
               {link.label}
             </a>
