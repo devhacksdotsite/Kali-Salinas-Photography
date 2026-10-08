@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/common/Container.astro";
+import { projects, type Project } from "../../data/projects";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props as { project: Project };
+---
+
+<BaseLayout title={`${project.brand ?? project.title} — Video Example`} description={project.description ?? project.alt}>
+  <section class="py-16 md:py-24">
+    <Container maxWidth="max-w-5xl">
+      <a href="/#work" class="mb-10 inline-flex text-sm font-semibold text-foreground/60 underline decoration-accent/50 underline-offset-4 transition-colors hover:text-accent">
+        ← Back to video examples
+      </a>
+
+      <div class="grid items-start gap-10 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-16">
+        <div class="reveal-child reveal-media overflow-hidden rounded-2xl bg-accent-light/70 shadow-sm md:justify-self-end">
+          <video
+            class="aspect-[9/16] h-full w-full object-cover"
+            controls
+            controlsList="nodownload noremoteplayback"
+            disablePictureInPicture
+            disableRemotePlayback
+            draggable="false"
+            preload="metadata"
+            poster={project.poster}
+            playsinline
+            aria-label={project.alt}
+          >
+            <source src={project.video} type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
+        </div>
+
+        <div class="reveal-child pt-2" style="--reveal-delay: 140ms">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{project.brand ?? project.title}</p>
+          <h1 class="mt-4 text-4xl leading-tight md:text-6xl">{project.title}</h1>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-foreground/65">{project.description ?? project.alt}</p>
+          <div class="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.14em] text-foreground/50">
+            <span class="rounded-full border border-border px-3 py-1.5">{project.category}</span>
+            {project.format && <span class="rounded-full border border-border px-3 py-1.5">{project.format}</span>}
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
