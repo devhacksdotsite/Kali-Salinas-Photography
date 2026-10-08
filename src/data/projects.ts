@@ -91,4 +91,15 @@ export const projects: Project[] = [
     alt: "Good & Gather decaf caramel macchiato coffee enjoyed in a patterned mug",
     description: "A cozy coffee moment featuring Good & Gather's decaf caramel macchiato flavor.",
   },
+  {
+    id: "blue-buffalo-boo-bits",
+    title: "Boo Bits Dog Treats",
+    brand: "Blue Buffalo",
+    category: "Pets",
+    format: "Product Demo",
+    video: "/videos/blue-buffalo-boo-bits.mp4",
+    poster: "/images/blue-buffalo-boo-bits.jpg",
+    alt: "Blue Buffalo Boo Bits soft and chewy dog treats in a Halloween-themed package",
+    description: "A playful close-up of Blue Buffalo's Boo Bits soft and chewy dog treats.",
+  },
 ];
