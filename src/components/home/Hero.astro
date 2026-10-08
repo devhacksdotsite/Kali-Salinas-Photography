@@ -4,20 +4,24 @@ import { creator } from "../../data/creator";
 ---
 <section class="border-b border-border px-5 pb-20 pt-20 md:px-8 md:pb-28 md:pt-28">
   <div class="mx-auto max-w-6xl reveal-fade">
-    <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+    <div class="grid items-center gap-12 text-center lg:grid-cols-[1.05fr_0.95fr] lg:text-left">
       <div>
         <p class="reveal-child mb-6 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
           <span class="block">{creator.name}</span>
           <span class="mt-2 block text-[10px] tracking-[0.3em] text-foreground/45">{creator.location}</span>
         </p>
-        <h1 class="reveal-child max-w-4xl text-5xl leading-[0.98] sm:text-6xl md:text-7xl" style="--reveal-delay: 100ms">Good content. Real life. A little personality.</h1>
-        <div class="reveal-child mt-8 max-w-md pb-1" style="--reveal-delay: 200ms">
+        <h1 class="reveal-child mx-auto max-w-4xl text-5xl leading-[0.98] sm:text-6xl md:text-7xl lg:mx-0" style="--reveal-delay: 100ms">Good content. Real life. A little personality.</h1>
+        <div class="reveal-child mx-auto mt-8 max-w-md pb-1 lg:mx-0" style="--reveal-delay: 200ms">
         <p class="text-base leading-relaxed text-foreground/65 md:text-lg">Lifestyle, beauty, travel, and everyday finds — brought to life through relatable storytelling and content that feels like a conversation, not an ad.</p>
-        <div class="mt-8 flex flex-wrap gap-3"><Button href="#work" variant="primary">View my work</Button><Button href="#contact" variant="outline">Let's work together</Button></div>
+        <div class="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start"><Button href="#work" variant="primary">View my work</Button><Button href="#contact" variant="outline">Let's work together</Button></div>
       </div>
       </div>
-      <div class="reveal-child reveal-image mx-auto w-full max-w-sm overflow-hidden rounded-2xl bg-accent-light lg:justify-self-end" style="--reveal-delay: 180ms">
-        <img src="/images/kali-portrait.jpg" alt="Kali Salinas smiling in a close-up portrait" class="aspect-[4/5] h-full w-full object-cover object-[center_25%]" loading="eager" decoding="async" />
+      <div class="reveal-child reveal-image relative mx-auto w-full max-w-sm lg:justify-self-end" style="--reveal-delay: 180ms">
+        <div class="absolute -inset-5 -z-10 rotate-[-4deg] rounded-[2rem] bg-accent-light/70 shadow-xl shadow-accent/10" aria-hidden="true"></div>
+        <div class="absolute -inset-2 -z-10 rotate-[2deg] rounded-[1.5rem] border border-accent/15 bg-background/70" aria-hidden="true"></div>
+        <div class="relative overflow-hidden rounded-2xl bg-accent-light">
+          <img src="/images/kali-portrait.jpg" alt="Kali Salinas smiling in a close-up portrait" class="aspect-[4/5] h-full w-full object-cover object-[center_25%]" loading="eager" decoding="async" />
+        </div>
       </div>
     </div>
   </div>

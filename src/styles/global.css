@@ -145,7 +145,8 @@
   }
 
   .js .reveal.revealed .reveal-child,
-  .js .reveal-fade.revealed .reveal-child {
+  .js .reveal-fade.revealed .reveal-child,
+  .js .reveal-child.revealed {
     opacity: 1;
     transform: translateY(0);
   }
